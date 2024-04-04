@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amish Products</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+</head>
+<body>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
+        document.body.appendChild(iframe);
+
+        iframe.addEventListener('load', function() {
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            iframeDocument.addEventListener('click', function(event) {
+                var target = event.target;
+                if (target.tagName === 'A' && target.href.startsWith('https://www.amazon.com')) {
+                    event.preventDefault();
+                    target.href += '&tag=ctl0d3d-20';
+                    window.location.href = target.href;
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
