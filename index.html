@@ -1,65 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amazon Affiliate</title>
-<style>
-    /* Base styles */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    #amazon-content {
-        width: 100%;
-        min-height: 50vh; /* Set a minimum height for the container, adjust as needed */
-        padding: 20px; /* Add some padding for better readability */
-    }
-    #amazon-content p {
-        margin: 0; /* Remove default margins for paragraphs */
-    }
-    
-    /* Responsive styles */
-    @media only screen and (max-width: 768px) {
-        /* Adjust styles for smaller screens */
-        #amazon-content {
-            padding: 10px; /* Reduce padding for smaller screens */
-        }
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Store</title>
+</head>
 <body>
 
-<div id="amazon-content">
-    <!-- Content will be dynamically loaded here -->
-</div>
+<object data="https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E" type="text/html" width="100%" height="600">
+  Your browser does not support embedded objects. Please visit the <a href="https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E">Amazon store</a> directly.
+</object>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var affiliateTag = 'ctl0d3d-20';
-    var amazonURL = 'amazon_content.html'; // Path to the modified HTML file
+  // Function to add affiliate tag to Amazon links
+  function addAffiliateTag() {
+    // Select all links in the embedded Amazon store
+    var amazonLinks = document.querySelectorAll('object[data^="https://www.amazon.com"] a');
 
-    fetch(amazonURL)
-        .then(response => response.text())
-        .then(data => {
-            // Inject the modified HTML content into the page
-            document.getElementById('amazon-content').innerHTML = data;
-            
-            // Modify links to include "amazon.com" and affiliate tag
-            var links = document.querySelectorAll('a[href^="https://amznlink.github.io"]');
-            links.forEach(function(link) {
-                var originalUrl = link.href;
-                // Append "amazon.com" domain and affiliate tag to the original URL
-                var modifiedUrl = 'https://www.amazon.com' + originalUrl.substring(originalUrl.indexOf('/dp/')) + '&tag=' + affiliateTag;
-                // Update the href attribute with the modified URL
-                link.href = modifiedUrl;
-            });
-        })
-        .catch(error => {
-            console.error('Error loading Amazon content:', error);
-            document.getElementById('amazon-content').innerHTML = '<p>Failed to load Amazon content. Please try again later.</p>';
-        });
-});
+    // Loop through each link and add affiliate tag
+    amazonLinks.forEach(function(link) {
+      var href = link.getAttribute('href');
+      // Check if the link is to an Amazon product
+      if (href.includes('amazon.com')) {
+        // Add your affiliate tag here
+        var affiliateTag = 'YOUR_AFFILIATE_TAG';
+        // Add the affiliate tag to the link
+        href += (href.includes('?') ? '&' : '?') + 'tag=' + affiliateTag;
+        link.setAttribute('href', href);
+      }
+    });
+  }
+
+  // Call the function when the page has finished loading
+  window.addEventListener('load', addAffiliateTag);
 </script>
 
 </body>
