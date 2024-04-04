@@ -68,8 +68,14 @@ function fetchAndOutputAmazonContent() {
     if ($amazonContent !== false) {
         // Modify links to include affiliate tag
         $modifiedContent = modifyAmazonContent($amazonContent);
+        
+        // Write modified content to index.html file
+        file_put_contents('index.html', $modifiedContent);
+        
+        // Echo the modified content (optional, for debugging)
         echo $modifiedContent;
     } else {
         echo "Failed to fetch Amazon content.";
     }
 }
+?>
