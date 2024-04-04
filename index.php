@@ -1,4 +1,9 @@
 <?php
+// Set CORS headers
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 // Amazon URL
 $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
 
@@ -37,3 +42,4 @@ function fetchAmazonContent($url) {
         return false;
     }
 }
+?>
