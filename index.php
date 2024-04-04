@@ -6,4 +6,4 @@ $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC92
 $amazonContent = file_get_contents($amazonURL);
 
 // Save modified content to a file
-file_put_contents('modified_amazon_content.html', $modifiedContent);
+file_put_contents('modified_amazon_content.html', $amazonContent);
