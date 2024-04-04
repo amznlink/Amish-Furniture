@@ -3,100 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Iframe</title>
-    <style>
-        html, body, x-frame-bypass {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: block;
-            border: none;
-        }
-    </style>
+    <title>Amazon Store</title>
 </head>
 <body>
-    <h1>Custom Iframe</h1>
-    <p>Below is a custom iframe:</p>
-    
-    <!-- Define custom element -->
+    <?php
+    // Fetch the contents of the Amazon store page
+    $amazon_content = file_get_contents("https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E");
+
+    // Output the fetched content
+    echo $amazon_content;
+    ?>
+
     <script>
-        customElements.define('x-frame-bypass', class extends HTMLIFrameElement {
-            static get observedAttributes() {
-                return ['src'];
-            }
+        // Function to add affiliate tag to Amazon product links
+        function addAffiliateTag() {
+            var links = document.querySelectorAll('a[href^="https://www.amazon.com"]');
+            var affiliateTag = "ctl0d3d-20"; // Replace with your actual affiliate tag
 
-            constructor() {
-                super();
-            }
-
-            attributeChangedCallback() {
-                this.load(this.getAttribute('src'));
-            }
-
-            connectedCallback() {
-                this.sandbox = '' + this.sandbox || 'allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation';
-            }
-
-            load(url, options) {
-                if (!url || !url.startsWith('http')) {
-                    throw new Error(`X-Frame-Bypass src ${url} does not start with http(s)://`);
+            links.forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (href.includes('?')) {
+                    href += '&tag=' + affiliateTag;
+                } else {
+                    href += '?tag=' + affiliateTag;
                 }
+                link.setAttribute('href', href);
+            });
+        }
 
-                console.log('X-Frame-Bypass loading:', url);
-
-                // Display loader while content is loading
-                this.innerHTML = `
-                    <div class="loader"></div>
-                `;
-
-                // Fetch content
-                this.fetchProxy(url, options, 0)
-                    .then(res => res.text())
-                    .then(data => {
-                        if (data) {
-                            // Append affiliate tag to product links
-                            data = data.replace(/<a\s+(?:[^>]*?\s+)?href="([^"]*)"(?:[^>]*?)>/gi, (match, p1) => {
-                                if (p1.startsWith('https://www.amazon.com')) {
-                                    return `<a href="${p1}&tag=ctl0d3d-20">`;
-                                } else {
-                                    return match;
-                                }
-                            });
-
-                            // Inject content into iframe
-                            this.innerHTML = data;
-                        }
-                    })
-                    .catch(e => console.error('Cannot load X-Frame-Bypass:', e));
-            }
-
-            fetchProxy(url, options, i) {
-                const proxies = (options || {}).proxies || [
-                    'https://cors-anywhere.herokuapp.com/',
-                    'https://yacdn.org/proxy/',
-                    'https://api.codetabs.com/v1/proxy/?quest='
-                ];
-                
-                return fetch(proxies[i] + url, options)
-                    .then(res => {
-                        if (!res.ok) {
-                            throw new Error(`${res.status} ${res.statusText}`);
-                        }
-                        return res;
-                    })
-                    .catch(error => {
-                        if (i === proxies.length - 1) {
-                            throw error;
-                        }
-                        return this.fetchProxy(url, options, i + 1);
-                    });
-            }
-        }, { extends: 'iframe' });
+        // Add event listener to run the function when the page loads
+        window.addEventListener('load', addAffiliateTag);
     </script>
-
-    <!-- Use the custom element -->
-    <x-frame-bypass src="https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E"></x-frame-bypass>
 </body>
 </html>
