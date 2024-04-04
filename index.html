@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Content Example</title>
+    <title>Dynamic Content</title>
 </head>
 <body>
     <div id="content"></div>
 
+    <!-- Include JavaScript for AJAX communication -->
     <script>
-        // Fetch content from fetch_content.php
-        fetch('fetch_content.php')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('content').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        // Function to fetch content from the PHP script
+        function fetchContent() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Update the content of the <div> element with the response
+                        document.getElementById('content').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Request failed. Status:', xhr.status);
+                    }
+                }
+            };
+            xhr.open('GET', 'fetch_content.php?action=fetchMoreContent', true);
+            xhr.send();
+        }
+        
+        // Call the fetchContent function to initiate the request
+        fetchContent();
     </script>
 </body>
 </html>
