@@ -7,13 +7,9 @@
 </head>
 <body>
     <div id="content"></div>
-    <button id="fetchContent">Fetch Amazon Content</button>
 
     <script>
-        document.getElementById("fetchContent").addEventListener("click", function() {
-            fetchAmazonContent();
-        });
-
+        // Function to fetch Amazon content
         function fetchAmazonContent() {
             fetch('fetch_content.php', {
                 method: 'POST'
@@ -31,6 +27,12 @@
                 console.error('Error:', error);
             });
         }
+
+        // Function to execute fetchAmazonContent when the page loads
+        window.onload = function() {
+            fetchAmazonContent(); // Fetch content when the page loads
+            setInterval(fetchAmazonContent, 3600000); // Fetch content every hour (3600000 milliseconds)
+        };
     </script>
 </body>
 </html>
