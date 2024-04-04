@@ -5,9 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amazon Affiliate</title>
 <style>
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
     #amazon-content {
         width: 100%;
         min-height: 50vh; /* Set a minimum height for the container, adjust as needed */
+        padding: 20px; /* Add some padding for better readability */
+    }
+    #amazon-content p {
+        margin: 0; /* Remove default margins for paragraphs */
+    }
+    
+    /* Responsive styles */
+    @media only screen and (max-width: 768px) {
+        /* Adjust styles for smaller screens */
+        #amazon-content {
+            padding: 10px; /* Reduce padding for smaller screens */
+        }
     }
 </style>
 </head>
