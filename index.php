@@ -7,27 +7,16 @@ header("Access-Control-Allow-Headers: Content-Type");
 // Amazon URL
 $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
 
-// Check if the request is a POST request
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Fetch Amazon content
-    $amazonContent = fetchAmazonContent($amazonURL);
+// Fetch Amazon content
+$amazonContent = fetchAmazonContent($amazonURL);
 
-    // Check if content is fetched successfully
-    if ($amazonContent !== false) {
-        // Modify links to include affiliate tag
-        $modifiedContent = modifyAmazonContent($amazonContent);
-        
-        // Save modified content to a file
-        file_put_contents('amazon_content.html', $modifiedContent);
-        http_response_code(200); // Set HTTP response code to 200 (OK)
-        echo "Amazon content updated successfully.";
-    } else {
-        http_response_code(500); // Set HTTP response code to 500 (Internal Server Error)
-        echo "Failed to fetch Amazon content.";
-    }
+// Check if content is fetched successfully
+if ($amazonContent !== false) {
+    // Modify links to include affiliate tag
+    $modifiedContent = modifyAmazonContent($amazonContent);
+    echo $modifiedContent;
 } else {
-    http_response_code(405); // Set HTTP response code to 405 (Method Not Allowed)
-    echo "Method not allowed.";
+    echo "Failed to fetch Amazon content.";
 }
 
 // Function to fetch Amazon content with handling for encoding and compression

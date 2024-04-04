@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Content</title>
 </head>
 <body>
+    <div id="content"></div>
+    <button id="fetchContent">Fetch Amazon Content</button>
 
-<object data="https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E" type="text/html" width="100%" height="600">
-  Your browser does not support embedded objects. Please visit the <a href="https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E">Amazon store</a> directly.
-</object>
+    <script>
+        document.getElementById("fetchContent").addEventListener("click", function() {
+            fetchAmazonContent();
+        });
 
-<script>
-  // Function to add affiliate tag to Amazon links
-  function addAffiliateTag() {
-    // Select all links in the embedded Amazon store
-    var amazonLinks = document.querySelectorAll('object[data^="https://www.amazon.com"] a');
-
-    // Loop through each link and add affiliate tag
-    amazonLinks.forEach(function(link) {
-      var href = link.getAttribute('href');
-      // Check if the link is to an Amazon product
-      if (href.includes('amazon.com')) {
-        // Add your affiliate tag here
-        var affiliateTag = 'YOUR_AFFILIATE_TAG';
-        // Add the affiliate tag to the link
-        href += (href.includes('?') ? '&' : '?') + 'tag=' + affiliateTag;
-        link.setAttribute('href', href);
-      }
-    });
-  }
-
-  // Call the function when the page has finished loading
-  window.addEventListener('load', addAffiliateTag);
-</script>
-
+        function fetchAmazonContent() {
+            fetch('fetch_content.php', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Amazon content.');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById("content").innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>
