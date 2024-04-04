@@ -5,8 +5,5 @@ $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC92
 // Fetch Amazon content
 $amazonContent = file_get_contents($amazonURL);
 
-// Modify links to include affiliate tag
-$modifiedContent = str_replace('https://www.amazon.com', 'https://www.amazon.com&tag=ctl0d3d-20', $amazonContent);
-
 // Save modified content to a file
 file_put_contents('modified_amazon_content.html', $modifiedContent);
