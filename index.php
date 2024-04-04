@@ -12,8 +12,11 @@ $amazonContent = fetchAmazonContent($amazonURL);
 
 // Check if content is fetched successfully
 if ($amazonContent !== false) {
-    // Save content to a file
-    file_put_contents('amazon_content.html', $amazonContent);
+    // Modify links to include affiliate tag
+    $modifiedContent = modifyAmazonContent($amazonContent);
+    
+    // Save modified content to a file
+    file_put_contents('amazon_content.html', $modifiedContent);
     echo "Amazon content saved successfully.";
 } else {
     echo "Failed to fetch Amazon content.";
@@ -41,4 +44,24 @@ function fetchAmazonContent($url) {
     } else {
         return false;
     }
+}
+
+// Function to modify Amazon content to include affiliate tag
+function modifyAmazonContent($content) {
+    // Parse the HTML content
+    $dom = new DOMDocument();
+    @$dom->loadHTML($content); // Suppress warnings
+    
+    // Find all links in the document
+    $links = $dom->getElementsByTagName('a');
+    foreach ($links as $link) {
+        $href = $link->getAttribute('href');
+        // Append affiliate tag to Amazon product links
+        if (strpos($href, 'https://www.amazon.com') === 0) {
+            $link->setAttribute('href', $href . '&tag=ctl0d3d-20');
+        }
+    }
+
+    // Output modified Amazon content
+    return $dom->saveHTML();
 }
