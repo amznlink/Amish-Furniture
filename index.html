@@ -46,10 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Inject the modified HTML content into the page
             document.getElementById('amazon-content').innerHTML = data;
             
-            // Modify links to include affiliate tag
-            var links = document.querySelectorAll('a[href^="https://www.amazon.com"]');
+            // Modify links to include "amazon.com" and affiliate tag
+            var links = document.querySelectorAll('a[href^="https://amznlink.github.io"]');
             links.forEach(function(link) {
-                link.href += '&tag=' + affiliateTag;
+                var originalUrl = link.href;
+                // Append "amazon.com" domain and affiliate tag to the original URL
+                var modifiedUrl = 'https://www.amazon.com' + originalUrl.substring(originalUrl.indexOf('/dp/')) + '&tag=' + affiliateTag;
+                // Update the href attribute with the modified URL
+                link.href = modifiedUrl;
             });
         })
         .catch(error => {
