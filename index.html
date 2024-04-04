@@ -3,34 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partner Website</title>
+    <title>Dynamic Content Example</title>
 </head>
 <body>
     <div id="content"></div>
 
     <script>
-        // Function to fetch Amazon content from the server
-        function fetchAmazonContent() {
-            fetch('fetch_content.php?action=fetchMoreContent')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch Amazon content.');
-                }
-                return response.text();
-            })
+        // Fetch content from fetch_content.php
+        fetch('fetch_content.php')
+            .then(response => response.text())
             .then(data => {
-                document.getElementById("content").innerHTML = data;
+                document.getElementById('content').innerHTML = data;
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-        }
-
-        // Fetch Amazon content when the page loads
-        fetchAmazonContent();
-
-        // Optionally, you can also fetch content periodically
-        // setInterval(fetchAmazonContent, 3600000); // Fetch content every hour (3600000 milliseconds)
     </script>
 </body>
 </html>
