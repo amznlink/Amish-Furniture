@@ -42,4 +42,3 @@ function fetchAmazonContent($url) {
         return false;
     }
 }
-?>
