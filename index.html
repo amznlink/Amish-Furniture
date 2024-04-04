@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Iframe</title>
+    <style>
+        html, body, x-frame-bypass {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Custom Iframe</h1>
@@ -36,36 +47,8 @@
                 console.log('X-Frame-Bypass loading:', url);
 
                 // Display loader while content is loading
-                this.srcdoc = `
-                    <html>
-                    <head>
-                        <style>
-                            .loader {
-                                position: absolute;
-                                top: calc(50% - 25px);
-                                left: calc(50% - 25px);
-                                width: 50px;
-                                height: 50px;
-                                background-color: #333;
-                                border-radius: 50%;
-                                animation: loader 1s infinite ease-in-out;
-                            }
-
-                            @keyframes loader {
-                                0% {
-                                    transform: scale(0);
-                                }
-                                100% {
-                                    transform: scale(1);
-                                    opacity: 0;
-                                }
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="loader"></div>
-                    </body>
-                    </html>
+                this.innerHTML = `
+                    <div class="loader"></div>
                 `;
 
                 // Fetch content
@@ -83,7 +66,7 @@
                             });
 
                             // Inject content into iframe
-                            this.srcdoc = data;
+                            this.innerHTML = data;
                         }
                     })
                     .catch(e => console.error('Cannot load X-Frame-Bypass:', e));
