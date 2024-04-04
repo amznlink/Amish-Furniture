@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amazon Affiliate</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
     #amazon-content {
         width: 100%;
@@ -19,28 +18,28 @@
 </div>
 
 <script>
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     var affiliateTag = 'ctl0d3d-20';
     var amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
 
-    $.ajax({
-        url: amazonURL,
-        dataType: 'html',
-        success: function(response) {
-            var amazonContent = $(response).find('#dynamic-content'); // Adjust the selector as per the structure of the Amazon page
-            $('#amazon-content').html(amazonContent);
-            $('#amazon-content a').each(function() {
-                var href = $(this).attr('href');
+    fetch(amazonURL)
+        .then(response => response.text())
+        .then(data => {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(data, 'text/html');
+            var amazonContent = doc.getElementById('dynamic-content'); // Adjust the selector as per the structure of the Amazon page
+            document.getElementById('amazon-content').appendChild(amazonContent);
+            document.querySelectorAll('#amazon-content a').forEach(function(link) {
+                var href = link.href;
                 if (href.startsWith('https://www.amazon.com')) {
-                    $(this).attr('href', href + '&tag=' + affiliateTag);
+                    link.href = href + '&tag=' + affiliateTag;
                 }
             });
-        },
-        error: function(xhr, status, error) {
+        })
+        .catch(error => {
             console.error('Error loading Amazon content:', error);
-            $('#amazon-content').html('<p>Failed to load Amazon content. Please try again later.</p>');
-        }
-    });
+            document.getElementById('amazon-content').innerHTML = '<p>Failed to load Amazon content. Please try again later.</p>';
+        });
 });
 </script>
 
