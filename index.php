@@ -5,20 +5,8 @@ $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC92
 // Fetch Amazon content
 $amazonContent = file_get_contents($amazonURL);
 
-// Parse and modify Amazon content to add affiliate tag
-$dom = new DOMDocument();
-@$dom->loadHTML($amazonContent); // Suppress warnings
+// Modify links to include affiliate tag
+$modifiedContent = str_replace('https://www.amazon.com', 'https://www.amazon.com&tag=ctl0d3d-20', $amazonContent);
 
-// Find all links in the document
-$links = $dom->getElementsByTagName('a');
-foreach ($links as $link) {
-    $href = $link->getAttribute('href');
-    if (strpos($href, 'https://www.amazon.com') === 0) {
-        // Append affiliate tag to Amazon product links
-        $link->setAttribute('href', $href . '&tag=ctl0d3d-20');
-    }
-}
-
-// Output modified Amazon content
-echo $dom->saveHTML();
-?>
+// Save modified content to a file
+file_put_contents('modified_amazon_content.html', $modifiedContent);
