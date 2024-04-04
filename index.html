@@ -48,7 +48,7 @@
         /* Styling for the share button */
         .share-button {
             position: absolute;
-            top: 10px; /* Adjust as needed */
+            bottom: 10px; /* Adjust as needed */
             right: 10px; /* Adjust as needed */
             background-color: #007bff;
             color: white;
@@ -62,6 +62,25 @@
         .share-button:hover {
             background-color: #b2f787;
         }
+
+        /* Style for the page share button */
+        #page-share-button {
+            background-color: #117cef;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        #page-share-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +89,9 @@
 <div class="container" id="product-container">
     <!-- Products will be displayed here -->
 </div>
+
+<!-- Button to share the entire page -->
+<button id="page-share-button">Share Page</button>
 
 <script>
     // Function to fetch CSV data and update product display
@@ -147,9 +169,26 @@
             });
     }
 
+    // Function to share the entire page URL
+    function sharePage() {
+        const pageUrl = window.location.href;
+        navigator.clipboard.writeText(pageUrl)
+            .then(() => {
+                console.log('Page URL copied to clipboard:', pageUrl);
+                alert('Page URL copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Error copying page URL to clipboard:', err);
+                alert('Failed to copy page URL!');
+            });
+    }
+
     // Fetch data initially and then refresh every 60 seconds
     fetchDataAndDisplay();
     setInterval(fetchDataAndDisplay, 6000000); // 6000000 ms = 10 minutes
+
+    // Add event listener to the page share button
+    document.getElementById('page-share-button').addEventListener('click', sharePage);
 </script>
 
 </body>
