@@ -13,6 +13,7 @@
         }
 
         .product {
+            position: relative; /* Added position relative for positioning the share button */
             width: 30%;
             margin-bottom: 20px;
             border: 1px solid #ccc;
@@ -42,6 +43,24 @@
 
         .buy-button:hover {
             background-color: #E68A00;
+        }
+
+        /* Styling for the share button */
+        .share-button {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .share-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -85,6 +104,8 @@
                                 <h3>${description}</h3>
                                 <p>Price: ${price}</p>
                                 <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
+                                <!-- Share button -->
+                                <button class="share-button" onclick="copyProductUrl('${productUrl}')">Share</button>
                             </div>
                         `;
 
@@ -113,9 +134,22 @@
             .catch(error => console.error('Error fetching data:', error));
     }
 
+    // Function to copy product URL to clipboard
+    function copyProductUrl(productUrl) {
+        navigator.clipboard.writeText(productUrl)
+            .then(() => {
+                console.log('Product URL copied to clipboard:', productUrl);
+                alert('Product URL copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Error copying product URL to clipboard:', err);
+                alert('Failed to copy product URL!');
+            });
+    }
+
     // Fetch data initially and then refresh every 60 seconds
     fetchDataAndDisplay();
-    setInterval(fetchDataAndDisplay, 6000000);
+    setInterval(fetchDataAndDisplay, 6000000); // 6000000 ms = 10 minutes
 </script>
 
 </body>
