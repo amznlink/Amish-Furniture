@@ -5,16 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amazon Affiliate</title>
 <style>
-    iframe {
+    #amazon-content {
         width: 100%;
-        min-height: 50vh; /* Set a minimum height for the iframe, adjust as needed */
-        border: none;
+        min-height: 50vh; /* Set a minimum height for the container, adjust as needed */
     }
 </style>
 </head>
 <body>
 
-<iframe src="index.php"></iframe>
+<div id="amazon-content">
+    <!-- Content will be dynamically loaded here -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var affiliateTag = 'ctl0d3d-20';
+    var amazonURL = 'modified_amazon_content.html'; // Path to the modified HTML file
+
+    fetch(amazonURL)
+        .then(response => response.text())
+        .then(data => {
+            // Inject the modified HTML content into the page
+            document.getElementById('amazon-content').innerHTML = data;
+            
+            // Modify links to include affiliate tag
+            var links = document.querySelectorAll('a[href^="https://www.amazon.com"]');
+            links.forEach(function(link) {
+                link.href += '&tag=' + affiliateTag;
+            });
+        })
+        .catch(error => {
+            console.error('Error loading Amazon content:', error);
+            document.getElementById('amazon-content').innerHTML = '<p>Failed to load Amazon content. Please try again later.</p>';
+        });
+});
+</script>
 
 </body>
 </html>
