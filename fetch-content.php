@@ -4,19 +4,12 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Amazon URL
-$amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
-
-// Fetch Amazon content
-$amazonContent = fetchAmazonContent($amazonURL);
-
-// Check if content is fetched successfully
-if ($amazonContent !== false) {
-    // Modify links to include affiliate tag
-    $modifiedContent = modifyAmazonContent($amazonContent);
-    echo $modifiedContent;
+// Check if the request is for more content
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'fetchMoreContent') {
+    // Fetch and output Amazon content dynamically
+    fetchAndOutputAmazonContent();
 } else {
-    echo "Failed to fetch Amazon content.";
+    echo "Invalid request.";
 }
 
 // Function to fetch Amazon content with handling for encoding and compression
@@ -25,7 +18,7 @@ function fetchAmazonContent($url) {
     $options = [
         'http' => [
             'header' => "Accept-Encoding: gzip\r\n",
-            'timeout' => 30, // Adjust timeout as needed
+            'timeout' => 10, // Reduced timeout for faster response
         ],
     ];
     $context = stream_context_create($options);
@@ -61,4 +54,22 @@ function modifyAmazonContent($content) {
 
     // Output modified Amazon content
     return $dom->saveHTML();
+}
+
+// Function to fetch and output Amazon content dynamically
+function fetchAndOutputAmazonContent() {
+    // Amazon URL
+    $amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
+
+    // Fetch Amazon content
+    $amazonContent = fetchAmazonContent($amazonURL);
+
+    // Check if content is fetched successfully
+    if ($amazonContent !== false) {
+        // Modify links to include affiliate tag
+        $modifiedContent = modifyAmazonContent($amazonContent);
+        echo $modifiedContent;
+    } else {
+        echo "Failed to fetch Amazon content.";
+    }
 }

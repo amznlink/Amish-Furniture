@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Content</title>
+    <title>Partner Website</title>
 </head>
 <body>
     <div id="content"></div>
 
     <script>
-        // Function to fetch Amazon content
+        // Function to fetch Amazon content from the server
         function fetchAmazonContent() {
-            fetch('fetch_content.php', {
-                method: 'POST'
-            })
+            fetch('fetch_content.php?action=fetchMoreContent')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch Amazon content.');
@@ -28,11 +26,11 @@
             });
         }
 
-        // Function to execute fetchAmazonContent when the page loads
-        window.onload = function() {
-            fetchAmazonContent(); // Fetch content when the page loads
-            setInterval(fetchAmazonContent, 3600000); // Fetch content every hour (3600000 milliseconds)
-        };
+        // Fetch Amazon content when the page loads
+        fetchAmazonContent();
+
+        // Optionally, you can also fetch content periodically
+        // setInterval(fetchAmazonContent, 3600000); // Fetch content every hour (3600000 milliseconds)
     </script>
 </body>
 </html>
