@@ -5,43 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amazon Affiliate</title>
 <style>
-    #amazon-content {
+    iframe {
         width: 100%;
-        min-height: 50vh; /* Set a minimum height for the container, adjust as needed */
+        min-height: 50vh; /* Set a minimum height for the iframe, adjust as needed */
+        border: none;
     }
 </style>
 </head>
 <body>
 
-<div id="amazon-content">
-    <!-- Content will be dynamically loaded here -->
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var affiliateTag = 'ctl0d3d-20';
-    var amazonURL = 'https://www.amazon.com/stores/DressTheYard/DressTheYard/page/CBC9241E-A816-48AB-8849-CB1F5A3F9A9F?ref_=cm_sw_r_ud_sf_stores_YZHDCZYCK5VFZWM2TX8E';
-
-    fetch(amazonURL)
-        .then(response => response.text())
-        .then(data => {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(data, 'text/html');
-            var amazonContent = doc.getElementById('dynamic-content'); // Adjust the selector as per the structure of the Amazon page
-            document.getElementById('amazon-content').appendChild(amazonContent);
-            document.querySelectorAll('#amazon-content a').forEach(function(link) {
-                var href = link.href;
-                if (href.startsWith('https://www.amazon.com')) {
-                    link.href = href + '&tag=' + affiliateTag;
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error loading Amazon content:', error);
-            document.getElementById('amazon-content').innerHTML = '<p>Failed to load Amazon content. Please try again later.</p>';
-        });
-});
-</script>
+<iframe src="amazon_proxy.php"></iframe>
 
 </body>
 </html>
