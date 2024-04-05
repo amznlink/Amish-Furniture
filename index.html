@@ -17,7 +17,7 @@
         }
 
         /* Your existing CSS styles */
-        h,h2 {
+        h, h2 {
             font-size: 24px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the font bold */
             text-align: center; /* Center align the text */
@@ -25,7 +25,6 @@
 
         p {
             text-align: center;
-            
         }
 
         .container {
@@ -36,44 +35,43 @@
         }
 
         .product {
-            position: relative; /* Added position relative for positioning the share button */
+            position: relative;
             width: 30%;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
-            position: relative;
         }
 
         /* Media query for mobile devices (max-width: 768px) */
         @media only screen and (max-width: 768px) {
             .product {
-                width: 100%; /* Each product container occupies 100% of the available width */
+                width: 100%;
             }
         }
 
         .product-img {
-            position: absolute;
-            margin-top: 10px;
             max-width: 100%;
             height: auto;
             cursor: pointer;
         }
 
         /* Styling for the Twitter share button */
-        .twitter-button {
+        .twitter-button, .share-button, .buy-button {
             position: absolute;
-            bottom: 10px; /* Adjust as needed */
-            left: 10px; /* Adjust as needed */
+            bottom: 10px;
+            width: calc(33.33% - 20px); /* Adjust button width */
+            margin: 0 10px; /* Adjust button spacing */
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .twitter-button {
+            left: 10px;
             background-color: #111212; /* Twitter brand color */
             color: white;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            height: 30px;
-            border-radius: 10%;
-            cursor: pointer;
         }
 
         .twitter-button:hover {
@@ -82,20 +80,10 @@
 
         /* Style for the buy button */
         .buy-button {
-            position: absolute;
-            bottom: 10px; /* Adjust as needed */
             left: 50%;
             transform: translateX(-50%);
             background-color: #747a16;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
         }
 
         .buy-button:hover {
@@ -104,16 +92,9 @@
 
         /* Styling for the share button */
         .share-button {
-            position: absolute;
-            bottom: 10px; /* Adjust as needed */
-            right: 10px; /* Adjust as needed */
+            right: 10px;
             background-color: #007bff;
             color: white;
-            border: none;
-            width: 80px;
-            height: 30px;
-            border-radius: 10%;
-            cursor: pointer;
         }
 
         .share-button:hover {
@@ -123,7 +104,7 @@
     </style>
 </head>
 <body>
-    <h>Products Built By The Amish...  Made In The USA 🇺🇸</h>
+    <h>Products Built By The Amish... Made In The USA 🇺🇸</h>
     <img class="screen-width-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" alt="Image Placeholder">
     <h2>More Products And Pages Coming Soon</h2>
 
