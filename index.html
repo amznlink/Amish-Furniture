@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amish Made American Products Collection 🇺🇸</title>
 
-    <meta name = "twitter:card" content = "summary_large_image" />
-    <meta name = "twitter:title" content = "Products Built By Amish Craftsman On Amazon Made In The USA 🇺🇸" />
-    <meta name = "twitter:image" content = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" /> <!-- Replace with your horse and buggy image URL -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Products Built By Amish Craftsman On Amazon Made In The USA 🇺🇸" />
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" /> <!-- Replace with your horse and buggy image URL -->
     <!-- End Twitter Card meta tags -->
 
     <style>
-        
         .screen-width-image {
             width: 100%;
             height: auto; /* Maintain aspect ratio */
@@ -38,6 +37,7 @@
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
+            position: relative;
         }
 
         /* Media query for mobile devices (max-width: 768px) */
@@ -58,7 +58,7 @@
             position: absolute;
             bottom: 10px; /* Adjust as needed */
             left: 10px; /* Adjust as needed */
-            background-color: #0c0c0c; /* Twitter brand color */
+            background-color: #111212; /* Twitter brand color */
             color: white;
             border: none;
             text-decoration: none;
@@ -70,10 +70,15 @@
         }
 
         .twitter-button:hover {
-            background-color: #202d38; /* Darker shade of Twitter brand color on hover */
+            background-color: #58a1ea; /* Darker shade of Twitter brand color on hover */
         }
 
+        /* Style for the buy button */
         .buy-button {
+            position: absolute;
+            bottom: 10px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
             background-color: #747a16;
             color: white;
             border: none;
@@ -82,7 +87,6 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin-top: 10px;
             border-radius: 4px;
             cursor: pointer;
         }
@@ -109,48 +113,6 @@
             background-color: #b2f787;
         }
 
-        /* Style for the page share button */
-        #page-share-button {
-            position: fixed;
-            bottom: 20px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background-color: #117cef;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        #page-share-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Style for the custom "Post On 𝕏" button */
-        #twitter-share-button {
-            position: fixed;
-            bottom: 20px; /* Adjust as needed */
-            left: 20px; /* Adjust as needed */
-            background-color: #111212; /* Twitter brand color */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        #twitter-share-button:hover {
-            background-color: #58a1ea; /* Darker shade of Twitter brand color on hover */
-        }
-
     </style>
 </head>
 <body>
@@ -158,127 +120,114 @@
     <img class="screen-width-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" alt="Image Placeholder">
     <h>More Products And Pages Coming Soon</h>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9963895832691583"
-        crossorigin="anonymous"></script>
-    <!-- Product -->
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-9963895832691583"
-        data-ad-slot="8563065810"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+    <div class="container" id="product-container">
+        <!-- Products will be displayed here -->
+    </div>
+
+    <!-- Button to share the entire page -->
+    <button id="page-share-button">Copy And Share</button>
+
+    <!-- Custom "Post On 𝕏" button for sharing the page to Twitter -->
+    <button id="twitter-share-button" onclick="sharePage()">Post On 𝕏</button>
+
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // Function to fetch CSV data and update product display
+        function fetchDataAndDisplay() {
+            fetch('products.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n').slice(1); // Remove header row
+                    const container = document.getElementById('product-container');
+
+                    // Create an array to store existing product URLs
+                    const existingProductUrls = [];
+
+                    // Loop through existing product containers and collect their product URLs
+                    container.querySelectorAll('.product').forEach(productContainer => {
+                        const productUrl = productContainer.querySelector('img').getAttribute('onclick').match(/'([^']+)'/)[1];
+                        existingProductUrls.push(productUrl);
+                    });
+
+                    // Loop through new CSV data and update or add product containers
+                    rows.forEach(row => {
+                        const columns = row.split(',');
+                        if (columns.length === 4) { // Check if all columns are present
+                            const description = columns[0].trim();
+                            const imageUrl = columns[1].trim();
+                            const price = columns[2].trim();
+                            const productUrl = columns[3].trim();
+
+                            const productHTML = `
+                                <div class="product">
+                                    <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
+                                    <h3>${description}</h3>
+                                    <p>Price: ${price}</p>
+                                    <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
+                                    <!-- Share button -->
+                                    <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
+                                    <!-- Twitter share button for individual product -->
+                                    <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
+                                </div>
+                            `;
+
+                            // If product URL already exists in the DOM, update its HTML; otherwise, append new product container
+                            if (existingProductUrls.includes(productUrl)) {
+                                const existingProductContainer = container.querySelector(`.product img[onclick="window.open('${productUrl}', '_blank')"]`).parentNode;
+                                existingProductContainer.innerHTML = productHTML;
+                            } else {
+                                container.innerHTML += productHTML;
+                            }
+
+                            // Remove the product URL from existingProductUrls array to keep track of updated products
+                            const index = existingProductUrls.indexOf(productUrl);
+                            if (index > -1) {
+                                existingProductUrls.splice(index, 1);
+                            }
+                        }
+                    });
+
+                    // Remove any product containers that correspond to products no longer present in the updated CSV data
+                    existingProductUrls.forEach(productUrl => {
+                        const productContainerToRemove = container.querySelector(`.product img[onclick="window.open('${productUrl}', '_blank')"]`).parentNode;
+                        container.removeChild(productContainerToRemove);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Function to copy product URL to clipboard
+        function copyProductUrl(productUrl) {
+            navigator.clipboard.writeText(productUrl)
+                .then(() => {
+                    console.log('Product URL copied to clipboard:', productUrl);
+                    alert('Product URL copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Error copying product URL to clipboard:', err);
+                    alert('Failed to copy product URL!');
+                });
+        }
+
+        // Function to share the entire page URL
+        function sharePage() {
+            const pageUrl = window.location.href;
+            const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}`;
+            window.open(tweetUrl, '_blank');
+        }
+
+        // Function to share product URL on Twitter
+        function shareProductToTwitter(productUrl) {
+            const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(productUrl)}`;
+            window.open(tweetUrl, '_blank');
+        }
+
+        // Fetch data initially and then refresh every 60 seconds
+        fetchDataAndDisplay();
+        setInterval(fetchDataAndDisplay, 6000000); // 6000000 ms = 10 minutes
+
+        // Add event listener to the page share button
+        document.getElementById('page-share-button').addEventListener('click', sharePage);
     </script>
-
-<div class="container" id="product-container">
-    <!-- Products will be displayed here -->
-</div>
-
-<!-- Button to share the entire page -->
-<button id="page-share-button">Copy And Share</button>
-
-<!-- Custom "Post On 𝕏" button for sharing the page to Twitter -->
-<button id="twitter-share-button" onclick="sharePage()">Post On 𝕏</button>
-
-<script>
-    // Function to fetch CSV data and update product display
-    function fetchDataAndDisplay() {
-        fetch('products.csv')
-            .then(response => response.text())
-            .then(data => {
-                const rows = data.split('\n').slice(1); // Remove header row
-                const container = document.getElementById('product-container');
-
-                // Create an array to store existing product URLs
-                const existingProductUrls = [];
-
-                // Loop through existing product containers and collect their product URLs
-                container.querySelectorAll('.product').forEach(productContainer => {
-                    const productUrl = productContainer.querySelector('img').getAttribute('onclick').match(/'([^']+)'/)[1];
-                    existingProductUrls.push(productUrl);
-                });
-
-                // Loop through new CSV data and update or add product containers
-                rows.forEach(row => {
-                    const columns = row.split(',');
-                    if (columns.length === 4) { // Check if all columns are present
-                        const description = columns[0].trim();
-                        const imageUrl = columns[1].trim();
-                        const price = columns[2].trim();
-                        const productUrl = columns[3].trim();
-
-                        const productHTML = `
-                            <div class="product">
-                                <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
-                                <h3>${description}</h3>
-                                <p>Price: ${price}</p>
-                                <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
-                                <!-- Share button -->
-                                <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
-                                <!-- Twitter share button for individual product -->
-                                <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
-                            </div>
-                        `;
-
-                        // If product URL already exists in the DOM, update its HTML; otherwise, append new product container
-                        if (existingProductUrls.includes(productUrl)) {
-                            const existingProductContainer = container.querySelector(`.product img[onclick="window.open('${productUrl}', '_blank')"]`).parentNode;
-                            existingProductContainer.innerHTML = productHTML;
-                        } else {
-                            container.innerHTML += productHTML;
-                        }
-
-                        // Remove the product URL from existingProductUrls array to keep track of updated products
-                        const index = existingProductUrls.indexOf(productUrl);
-                        if (index > -1) {
-                            existingProductUrls.splice(index, 1);
-                        }
-                    }
-                });
-
-                // Remove any product containers that correspond to products no longer present in the updated CSV data
-                existingProductUrls.forEach(productUrl => {
-                    const productContainerToRemove = container.querySelector(`.product img[onclick="window.open('${productUrl}', '_blank')"]`).parentNode;
-                    container.removeChild(productContainerToRemove);
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }
-
-    // Function to copy product URL to clipboard
-    function copyProductUrl(productUrl) {
-        navigator.clipboard.writeText(productUrl)
-            .then(() => {
-                console.log('Product URL copied to clipboard:', productUrl);
-                alert('Product URL copied to clipboard!');
-            })
-            .catch(err => {
-                console.error('Error copying product URL to clipboard:', err);
-                alert('Failed to copy product URL!');
-            });
-    }
-
-    // Function to share the entire page URL
-    function sharePage() {
-        const pageUrl = window.location.href;
-        const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}`;
-        window.open(tweetUrl, '_blank');
-    }
-
-    // Function to share product URL on Twitter
-    function shareProductToTwitter(productUrl) {
-        const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(productUrl)}`;
-        window.open(tweetUrl, '_blank');
-    }
-
-    // Fetch data initially and then refresh every 60 seconds
-    fetchDataAndDisplay();
-    setInterval(fetchDataAndDisplay, 6000000); // 6000000 ms = 10 minutes
-
-    // Add event listener to the page share button
-    document.getElementById('page-share-button').addEventListener('click', sharePage);
-</script>
     <a>As an Amazon Associate I May Earn A Commission On Any Products Bought Through These Links. I hope You Enjoy Your Products!</a>
 </body>
 </html>
