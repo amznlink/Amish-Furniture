@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amish Furniture Collection</title>
     <style>
+        /* Your existing CSS styles */
         h {
             font-size: 24px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the font bold */
@@ -78,6 +79,9 @@
 
         /* Style for the page share button */
         #page-share-button {
+            position: fixed;
+            bottom: 20px; /* Adjust as needed */
+            right: 20px; /* Adjust as needed */
             background-color: #117cef;
             color: white;
             border: none;
@@ -88,7 +92,6 @@
             font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 20px; /* Adjust as needed */
         }
 
         #page-share-button:hover {
@@ -154,6 +157,7 @@
                                 <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                 <!-- Share button -->
                                 <button class="share-button" onclick="copyProductUrl('${productUrl}')">Share ⤴️</button>
+                                <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Share on Twitter</button>
                             </div>
                         `;
 
@@ -207,6 +211,12 @@
                 console.error('Error copying page URL to clipboard:', err);
                 alert('Failed to copy page URL!');
             });
+    }
+
+    // Function to share product URL on Twitter
+    function shareProductToTwitter(productUrl) {
+        const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(productUrl)}`;
+        window.open(tweetUrl, '_blank');
     }
 
     // Fetch data initially and then refresh every 60 seconds
