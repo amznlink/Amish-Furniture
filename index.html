@@ -17,7 +17,7 @@
         }
 
         /* Your existing CSS styles */
-        h, h3 {
+        h,h2 {
             font-size: 24px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the font bold */
             text-align: center; /* Center align the text */
@@ -52,9 +52,11 @@
             }
         }
 
-        .img {
+        .product-img {
+            position: absolute;
+            margin-top: 10px;
             max-width: 100%;
-            height: 70%;
+            height: auto;
             cursor: pointer;
         }
 
@@ -123,7 +125,7 @@
 <body>
     <h>Products Built By The Amish...  Made In The USA 🇺🇸</h>
     <img class="screen-width-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" alt="Image Placeholder">
-    <h>More Products And Pages Coming Soon</h>
+    <h2>More Products And Pages Coming Soon</h2>
 
     <div class="container" id="product-container">
         <!-- Products will be displayed here -->
@@ -164,7 +166,7 @@
 
                             const productHTML = `
                                 <div class="product">
-                                    <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
+                                    <img class="product-img" src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
                                     <h3>${description}</h3>
                                     <p>Price: ${price}</p>
                                     <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
