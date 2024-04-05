@@ -30,8 +30,8 @@
 
         /* Media query for mobile devices (max-width: 768px) */
         @media only screen and (max-width: 768px) {
-        .product {
-            width: 100%; /* Each product container occupies 100% of the available width */
+            .product {
+                width: 100%; /* Each product container occupies 100% of the available width */
             }
         }
 
@@ -41,8 +41,28 @@
             cursor: pointer;
         }
 
+        /* Styling for the Twitter share button */
+        .twitter-button {
+            position: absolute;
+            bottom: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+            background-color: #0c0c0c; /* Twitter brand color */
+            color: white;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            height: 30px;
+            border-radius: 10%;
+            cursor: pointer;
+        }
+
+        .twitter-button:hover {
+            background-color: #202d38; /* Darker shade of Twitter brand color on hover */
+        }
+
         .buy-button {
-            background-color: #FF9900;
+            background-color: #747a16;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -56,7 +76,7 @@
         }
 
         .buy-button:hover {
-            background-color: #E68A00;
+            background-color: #f8f546;
         }
 
         /* Styling for the share button */
@@ -97,6 +117,27 @@
         #page-share-button:hover {
             background-color: #0056b3;
         }
+
+        /* Style for the custom "Post On 𝕏" button */
+        #twitter-share-button {
+            position: fixed;
+            bottom: 20px; /* Adjust as needed */
+            left: 20px; /* Adjust as needed */
+            background-color: #111212; /* Twitter brand color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #twitter-share-button:hover {
+            background-color: #58a1ea; /* Darker shade of Twitter brand color on hover */
+        }
     </style>
 </head>
 <body>
@@ -120,7 +161,10 @@
 </div>
 
 <!-- Button to share the entire page -->
-<button id="page-share-button">Share Page</button>
+<button id="page-share-button">Copy And Share</button>
+
+<!-- Custom "Post On 𝕏" button for sharing the page to Twitter -->
+<button id="twitter-share-button" onclick="sharePage()">Post On 𝕏</button>
 
 <script>
     // Function to fetch CSV data and update product display
@@ -156,8 +200,9 @@
                                 <p>Price: ${price}</p>
                                 <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                 <!-- Share button -->
-                                <button class="share-button" onclick="copyProductUrl('${productUrl}')">Share ⤴️</button>
-                                <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Share on Twitter</button>
+                                <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
+                                <!-- Twitter share button for individual product -->
+                                <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
                             </div>
                         `;
 
@@ -202,15 +247,8 @@
     // Function to share the entire page URL
     function sharePage() {
         const pageUrl = window.location.href;
-        navigator.clipboard.writeText(pageUrl)
-            .then(() => {
-                console.log('Page URL copied to clipboard:', pageUrl);
-                alert('Page URL copied to clipboard!');
-            })
-            .catch(err => {
-                console.error('Error copying page URL to clipboard:', err);
-                alert('Failed to copy page URL!');
-            });
+        const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}`;
+        window.open(tweetUrl, '_blank');
     }
 
     // Function to share product URL on Twitter
