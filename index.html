@@ -41,6 +41,10 @@
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* Media query for mobile devices (max-width: 768px) */
@@ -51,25 +55,34 @@
         }
 
         .product-img {
-            max-width: 100%;
+            max-width: 75%;
             height: auto;
             cursor: pointer;
         }
 
+        .description {
+            width: 100%;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            width: 100%;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
         /* Styling for the Twitter share button */
         .twitter-button, .share-button, .buy-button {
-            position: absolute;
-            bottom: 10px;
-            width: calc(33.33% - 20px); /* Adjust button width */
-            margin: 0 10px; /* Adjust button spacing */
-            padding: 10px;
-            font-size: 16px;
+            width: 25%;
+            margin-top: 5px;
+            padding: 5px;
+            font-size: 14px;
             border-radius: 4px;
             cursor: pointer;
         }
 
         .twitter-button {
-            left: 10px;
             background-color: #111212; /* Twitter brand color */
             color: white;
         }
@@ -80,8 +93,6 @@
 
         /* Style for the buy button */
         .buy-button {
-            left: 50%;
-            transform: translateX(-50%);
             background-color: #747a16;
             color: white;
         }
@@ -92,7 +103,6 @@
 
         /* Styling for the share button */
         .share-button {
-            right: 10px;
             background-color: #007bff;
             color: white;
         }
@@ -148,8 +158,8 @@
                             const productHTML = `
                                 <div class="product">
                                     <img class="product-img" src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
-                                    <h3>${description}</h3>
-                                    <p>Price: ${price}</p>
+                                    <p class="description">${description}</p>
+                                    <p class="price">Price: ${price}</p>
                                     <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                     <!-- Share button -->
                                     <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
