@@ -113,6 +113,14 @@
             background-color: #b2f787;
         }
 
+        /* Styling for the buttons container */
+        .button-container {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -162,11 +170,13 @@
                                     <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
                                     <h3>${description}</h3>
                                     <p>Price: ${price}</p>
-                                    <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
-                                    <!-- Share button -->
-                                    <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
-                                    <!-- Twitter share button for individual product -->
-                                    <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
+                                    <div class="button-container">
+                                        <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
+                                        <!-- Share button -->
+                                        <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
+                                        <!-- Twitter share button for individual product -->
+                                        <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
+                                    </div>
                                 </div>
                             `;
 
