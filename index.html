@@ -75,10 +75,6 @@
 
         /* Style for the buy button */
         .buy-button {
-            position: absolute;
-            bottom: 10px; /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
             background-color: #747a16;
             color: white;
             border: none;
@@ -119,6 +115,10 @@
             bottom: 10px;
             width: 100%;
             text-align: center;
+        }
+
+        .price {
+            margin-top: 10px;
         }
 
     </style>
@@ -169,7 +169,6 @@
                                 <div class="product">
                                     <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
                                     <h3>${description}</h3>
-                                    <p>Price: ${price}</p>
                                     <div class="button-container">
                                         <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                         <!-- Share button -->
@@ -177,6 +176,7 @@
                                         <!-- Twitter share button for individual product -->
                                         <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
                                     </div>
+                                    <p class="price">Price: ${price}</p>
                                 </div>
                             `;
 
