@@ -115,7 +115,7 @@
 
         /* Styling for the buttons container */
         .button-container {
-            position: relative;
+            position: absolute;
             bottom: 10px;
             width: 100%;
             text-align: center;
@@ -172,7 +172,7 @@
                                         <p>Price: ${price}</p>
                                         <h3>${description}</h3>
                                     </div>
-                                        <div class="button-container">
+                                    <div class="button-container">
                                         <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                         <!-- Share button -->
                                         <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
