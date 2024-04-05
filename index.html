@@ -17,10 +17,15 @@
         }
 
         /* Your existing CSS styles */
-        h {
+        h, h3 {
             font-size: 24px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the font bold */
             text-align: center; /* Center align the text */
+        }
+
+        p {
+            text-align: center;
+            
         }
 
         .container {
@@ -47,9 +52,9 @@
             }
         }
 
-        img {
-            max-width: 80%;
-            height: auto;
+        .img {
+            max-width: 100%;
+            height: 70%;
             cursor: pointer;
         }
 
@@ -159,11 +164,9 @@
 
                             const productHTML = `
                                 <div class="product">
-                                    <div>
-                                        <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
-                                        <p>Price: ${price}</p>
-                                        <h3>${description}</h3>
-                                    </div>
+                                    <img src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
+                                    <h3>${description}</h3>
+                                    <p>Price: ${price}</p>
                                     <button class="buy-button" onclick="window.open('${productUrl}', '_blank')">Buy Now</button>
                                     <!-- Share button -->
                                     <button class="share-button" onclick="copyProductUrl('${productUrl}')">Copy And Share</button>
