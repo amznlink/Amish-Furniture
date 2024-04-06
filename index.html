@@ -52,7 +52,7 @@
             position: relative;
             width: 30%;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 3px solid #ccc;
             padding: 10px;
             text-align: center;
             display: flex;
@@ -180,7 +180,7 @@
 
     <div class="sticky-buttons">
         <!-- Custom "Post On X" button -->
-        <button id="twitter-share-button" onclick="sharePage()">Post On X</button>
+        <button id="twitter-share-button" onclick="sharePage()">Post On 𝕏</button>
         <!-- Button to share the entire page -->
     </div>
 
@@ -215,7 +215,7 @@
                                 <div class="product">
                                     <img class="product-img" src="${imageUrl}" alt="${description}" onclick="window.open('${productUrl}', '_blank')">
                                     <p class="description">${description}</p>
-                                    <p class="price">Prices Are Subject To Change:$${price}</p>
+                                    <p class="price">Prices Are Subject To Change:<span style="color: red;">$${price}</span></p>
                                     <div class="button-container">
                                         <!-- Twitter share button for individual product -->
                                         <button class="twitter-button" onclick="shareProductToTwitter('${productUrl}')">Post On 𝕏</button>
