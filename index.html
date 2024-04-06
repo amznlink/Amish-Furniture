@@ -61,19 +61,6 @@
             align-items: center;
         }
 
-        /* Media query for mobile devices (max-width: 768px) */
-        @media only screen and (max-width: 768px) {
-            h2 {
-                font-size: 25px;\
-            }
-            .product {
-                width: 100%;
-            }
-            .description {
-                font-size: 20px;
-            }
-        }
-
         .product-img {
             max-width: 100%;
             height: auto;
@@ -166,11 +153,24 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        
+        /* Media query for mobile devices (max-width: 768px) */
+        @media only screen and (max-width: 768px) {
+            h2 {
+                font-size: 25px;\
+            }
+            .product {
+                width: 100%;
+            }
+            .description {
+                font-size: 20px;
+            }
+        }
 
     </style>
 </head>
 <body> 
-    <h2>Products Built By The Amish... Made In The USA 🇺🇸</h2><h2>Other American Made Product Sites Coming Soon!</h2><h2>Thank You For Supporting American Manufacturers</h2>
+    <h2>Products Built By The Amish... <span style="color: red">Made</span><span style="color: white"> In The</span><span style="color: red"> USA</span>🇺🇸</h2><h2>Other American Made Product Sites Coming Soon!</h2><h2>Thank You For Supporting American Manufacturers</h2>
     <img class="screen-width-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg6vLeFTuXejqjapMHpzeNrdQw3gs1hoLPZQiyyrONsA&s" alt="Image Placeholder">
     <h2>More Products And Pages Coming Soon</h2>
 
