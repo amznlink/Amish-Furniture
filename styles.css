@@ -1,3 +1,29 @@
+/* Sticky header styles */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.sticky-header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.sticky-header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.sticky-header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 /* Set background image */
 body {
     background-image: url('https://i.pinimg.com/originals/af/65/fb/af65fbf0f9f4f60657874bc16a6cb40e.jpg');
