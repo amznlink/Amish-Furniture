@@ -27,12 +27,14 @@
         }
 
         /* Your existing CSS styles */
-        h, h2 {
-            font-size: 24px; /* Adjust the font size as needed */
+        h2 {
+            width: auto;
+            font-size: 40px; /* Adjust the font size as needed */
             font-weight: bold; /* Make the font bold */
             text-align: center; /* Center align the text */
             border-radius: 4px;
-            background-color: gray;
+            background-color: black;
+            color: white;
         }
 
         p {
@@ -61,8 +63,14 @@
 
         /* Media query for mobile devices (max-width: 768px) */
         @media only screen and (max-width: 768px) {
+            h2 {
+                font-size: 25px;\
+            }
             .product {
                 width: 100%;
+            }
+            .description {
+                font-size: 20px;
             }
         }
 
@@ -70,22 +78,24 @@
             max-width: 100%;
             height: auto;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .description {
             width: auto;
             font-size: 35px;
-            margin-bottom: 45px;
-            border-radius: 4px;
+            margin-bottom: 35px;
+            border-radius: 6px;
             background-color: white;
         }
 
         .price {
             width: auto;
+            font-weight: bold;
             font-size: 20px;
-            margin-bottom: 70px;
-            background-color: gray;
+            margin-bottom: 65px;
+            background-color: black;
+            color: white;
         }
 
         /* Styling for the Twitter share button */
@@ -274,6 +284,6 @@
         // Add event listener to the page share button
         document.getElementById('page-share-button').addEventListener('click', sharePage);
     </script>
-    <a>As an Amazon Associate I May Earn A Commission On Any Products Bought Through These Links. I hope You Enjoy Your Products!</a>
+    <h2>As an Amazon Associate I May Earn A Commission On Any Products Bought Through These Links. I hope You Enjoy Your Products!</h2>
 </body>
 </html>
