@@ -13,8 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Fetch latest products.csv
+      - name: Fetch latest products.csv maiboxes.csv
         run: wget -O products.csv https://raw.githubusercontent.com/amznlink/Amish-Furniture/main/products.csv
+        run: wget -O products.csv https://raw.githubusercontent.com/amznlink/Amish-Furniture/main/mailboxes.csv
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
