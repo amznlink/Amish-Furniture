@@ -212,41 +212,10 @@ p {
     }
 
     .hamburger {
-        position: sticky;
-        display: block;
-        font-size: 25px;
-        margin: 15px;
-        color: #111;
-        cursor: pointer;
+        display: block; /* Display on mobile devices */
     }
 
     .menu {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-    }
-    
-    .menu a {
-        padding: 10px 10px 10px 30px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
-    
-    .menu a:hover {
-        color: #f1f1f1;
-    }
-
-    .sticky-header {
-        display: none;
+        padding-top: 80px;
     }
 }
