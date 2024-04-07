@@ -27,7 +27,8 @@
 
 .hamburger {
     position: fixed; /* Fix hamburger position */
-    margin-right: 30px;
+    right: 0;
+    top: 0;
     font-size: 25px; /* Set font size for hamburger icon */
     margin-top: 30px; /* Set margin for positioning */
     cursor: pointer; /* Change cursor to pointer */
@@ -36,6 +37,7 @@
 
 .desktop-header {
     position: fixed; /* Fix desktop header position */
+    top: 0;
     display: block; /* Display desktop header by default */
     background-color: #000000; /* Set desktop header background color */
     width: 100%; /* Desktop header background width */
