@@ -1,27 +1,43 @@
 /* Sticky header styles */
-.sticky-header {
+.menu {
+    height: 100%;
+    width: 0;
     position: fixed;
+    z-index: 1;
     top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.sticky-header nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.sticky-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.sticky-header nav ul li a {
+.menu a {
+    padding: 10px 10px 10px 30px;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #f1f1f1;
+}
+
+.hamburger {
+    display: none; /* Hide by default */
+    font-size: 25px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 /* Set background image */
@@ -176,5 +192,12 @@ p {
     }
     .description {
         font-size: 20px;
+    }
+    .hamburger {
+        display: block; /* Display on mobile devices */
+    }
+
+    .menu {
+        padding-top: 80px;
     }
 }
