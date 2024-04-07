@@ -30,7 +30,6 @@
     right: 0;
     top: 0;
     font-size: 25px; /* Set font size for hamburger icon */
-    margin-top: 30px; /* Set margin for positioning */
     cursor: pointer; /* Change cursor to pointer */
     z-index: 1000; /* Ensure hamburger stays above other content */
 }
@@ -41,7 +40,6 @@
     display: block; /* Display desktop header by default */
     background-color: #000000; /* Set desktop header background color */
     width: 100%; /* Desktop header background width */
-    margin-top: 2px;
     z-index: 1000; /* Ensure desktop header stays above other content */
 }
 
@@ -66,6 +64,7 @@
     color: #fbfbfb; /* Set color for desktop header links */
     text-decoration-line: underline; /* Remove underline */
     font-size: 30px; /* Set font size for desktop header links */
+    text-align: center;
 }
 
 .desktop-header nav ul li a:hover {
@@ -245,7 +244,7 @@ p {
 /* Media query for mobile devices (max-width: 768px) */
 @media only screen and (max-width: 768px) {
     h1,h2,h3 {
-        font-size: 25px; /* Set font size */
+        font-size: 15px; /* Set font size */
     }
     .product {
         width: 100%; /* Set width to 100% */
