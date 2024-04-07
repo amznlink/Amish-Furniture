@@ -1,6 +1,6 @@
 // Function to fetch CSV data and update product display
 function fetchDataAndDisplay() {
-    fetch('mailboxes.csv')
+    fetch('products.csv')
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').slice(1); // Remove header row
