@@ -6,7 +6,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #f7efef;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -26,7 +26,7 @@
 }
 
 .hamburger {
-    display: flex; /* Hide by default */
+    display: none; /* Hide by default */
     font-size: 25px;
     margin: 15px;
     cursor: pointer;
@@ -35,26 +35,9 @@
 .sticky-header {
     position: sticky;
     top: 0;
-    background-color: #333;
+    background-color: #460505;
     padding: 10px 0;
     z-index: 1000;
-}
-
-.sticky-header nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.sticky-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.sticky-header nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
 }
 
 /* Set background image */
@@ -212,7 +195,7 @@ p {
     }
 
     .hamburger {
-        display: flex; /* Display on mobile devices */
+        display: block; /* Display on mobile devices */
     }
 
     .menu {
