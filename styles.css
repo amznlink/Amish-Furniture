@@ -1,6 +1,6 @@
 /* Sticky header styles */
 .menu {
-    height: 100%; /* Set menu height to full viewport height */
+    height: 80%; /* Set menu height to full viewport height */
     width: 0; /* Initially hide the menu */
     position: fixed; /* Fix menu position */
     z-index: 1; /* Ensure menu stays above other content */
@@ -16,13 +16,13 @@
     padding: 10px 10px 10px 30px; /* Set padding for menu links */
     text-decoration: none; /* Remove underline from links */
     font-size: 25px; /* Set font size for menu links */
-    color: #ffffff; /* Set text color for menu links */
+    color: #b4b7ba; /* Set text color for menu links */
     display: block; /* Display links as block elements */
     transition: 0.3s; /* Add transition effect for smoother appearance */
 }
 
 .menu a:hover {
-    color: #f1f1f1; /* Change link color on hover */
+    color: #2e1fdb; /* Change link color on hover */
 }
 
 .hamburger {
