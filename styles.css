@@ -1,24 +1,23 @@
 /* Sticky header styles */
 .menu {
-    display: none;
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #f7efef;
+    background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
 
 .menu a {
-    display: none;
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
+    display: block;
     transition: 0.3s;
 }
 
@@ -27,22 +26,34 @@
 }
 
 .hamburger {
-    display: none; /* Hide by default */
     font-size: 25px;
     margin: 15px;
-    margin-right: 10px;
     cursor: pointer;
 }
 
-.sticky-header {
-    display: block;
-    position: sticky;
-    top: 0;
-    background-color: #460505;
-    padding: 10px 0;
-    z-index: 1000;
+.desktop-header {
+    display: block; /* Display desktop header by default */
 }
 
+.desktop-header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Change display to flex */
+}
+
+.desktop-header nav ul li {
+    display: inline-block; /* Change display to inline-block */
+    margin-right: 20px; /* Add some spacing between the links */
+}
+
+.desktop-header nav ul li:last-child {
+    margin-right: 0; /* Remove margin-right for the last link */
+}
+
+.mobile-header {
+    display: none; /* Hide mobile header by default */
+}
 /* Set background image */
 body {
     background-image: url('https://i.pinimg.com/originals/af/65/fb/af65fbf0f9f4f60657874bc16a6cb40e.jpg');
@@ -197,15 +208,19 @@ p {
         font-size: 20px;
     }
 
-    .hamburger {
-        display: block; /* Display on mobile devices */
+    .desktop-header {
+        display: none; /* Hide desktop header on mobile devices */
+    }
+
+    .mobile-header {
+        display: block; /* Display mobile header on mobile devices */
     }
 
     .menu {
-        display: block;
         padding-top: 80px;
     }
-    .sticky-header {
-        display: none;
+
+    .hamburger {
+        display: block; /* Display hamburger menu on mobile devices */
     }
 }
