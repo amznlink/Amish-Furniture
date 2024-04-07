@@ -1,47 +1,49 @@
 /* Sticky header styles */
 .menu {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    height: 100%; /* Set menu height to full viewport height */
+    width: 0; /* Initially hide the menu */
+    position: fixed; /* Fix menu position */
+    z-index: 1; /* Ensure menu stays above other content */
+    top: 0; /* Position menu at the top */
+    left: 0; /* Position menu at the left */
+    background-color: #111; /* Set menu background color */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    transition: 0.5s; /* Add transition effect for smoother appearance */
+    padding-top: 60px; /* Add padding to the top of the menu */
 }
 
 .menu a {
-    padding: 10px 10px 10px 30px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
+    padding: 10px 10px 10px 30px; /* Set padding for menu links */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 25px; /* Set font size for menu links */
+    color: #ffffff; /* Set text color for menu links */
+    display: block; /* Display links as block elements */
+    transition: 0.3s; /* Add transition effect for smoother appearance */
 }
 
 .menu a:hover {
-    color: #f1f1f1;
+    color: #f1f1f1; /* Change link color on hover */
 }
 
 .hamburger {
-    position: sticky;
-    font-size: 25px;
-    margin: 15px;
-    cursor: pointer;
+    position: fixed; /* Fix hamburger position */
+    font-size: 25px; /* Set font size for hamburger icon */
+    margin: 15px; /* Set margin for positioning */
+    cursor: pointer; /* Change cursor to pointer */
+    z-index: 1000; /* Ensure hamburger stays above other content */
 }
 
 .desktop-header {
-    position: sticky;
+    position: fixed; /* Fix desktop header position */
     display: block; /* Display desktop header by default */
-    background-color: #000000;
+    background-color: #000000; /* Set desktop header background color */
+    z-index: 1000; /* Ensure desktop header stays above other content */
 }
 
 .desktop-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style-type: none; /* Remove bullet points from list */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
     display: flex; /* Change display to flex */
 }
 
@@ -56,170 +58,171 @@
 
 /* Styles for desktop header links */
 .desktop-header nav ul li a {
-    color: #1befa1; /* Change color to white */
+    color: #fbfbfb; /* Set color for desktop header links */
     text-decoration: none; /* Remove underline */
-    font-size: 40px; /* Adjust the font size as needed */ 
+    font-size: 40px; /* Set font size for desktop header links */
 }
 
 .desktop-header nav ul li a:hover {
-    color: #f0dddd; /* Change color on hover to red */
+    color: #f0dddd; /* Change color on hover */
 }
 
 .mobile-header {
     display: none; /* Hide mobile header by default */
 }
+
 /* Set background image */
 body {
-    background-image: url('https://i.pinimg.com/originals/af/65/fb/af65fbf0f9f4f60657874bc16a6cb40e.jpg');
+    background-image: url('https://i.pinimg.com/originals/af/65/fb/af65fbf0f9f4f60657874bc16a6cb40e.jpg'); /* Set background image */
     background-size: cover; /* Adjust as needed */
     background-position: center; /* Adjust as needed */
-    background-attachment: fixed;
+    background-attachment: fixed; /* Fix background image */
 }
 
 .screen-width-image {
-    width: 100%;
+    width: 100%; /* Set image width to 100% */
     height: auto; /* Maintain aspect ratio */
 }
 
 /* Your existing CSS styles */
 h2 {
-    width: auto;
-    font-size: 40px; /* Adjust the font size as needed */
+    width: auto; /* Set width to auto */
+    font-size: 40px; /* Set font size */
     font-weight: bold; /* Make the font bold */
     text-align: center; /* Center align the text */
-    border-radius: 4px;
-    background-color: black;
-    color: white;
+    border-radius: 4px; /* Add border radius */
+    background-color: black; /* Set background color */
+    color: white; /* Set text color */
 }
 
 p {
-    text-align: center;
+    text-align: center; /* Center align paragraphs */
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
+    display: flex; /* Display container as flex */
+    flex-wrap: wrap; /* Allow wrapping of flex items */
+    justify-content: space-around; /* Distribute items evenly with space around */
+    margin-top: 20px; /* Add margin to the top */
 }
 
 .product {
-    position: relative;
-    width: 30%;
-    margin-bottom: 20px;
-    border: 3px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    position: relative; /* Set position to relative */
+    width: 30%; /* Set width of product */
+    margin-bottom: 20px; /* Add margin to the bottom */
+    border: 3px solid #ccc; /* Add border */
+    padding: 10px; /* Add padding */
+    text-align: center; /* Center align text */
+    display: flex; /* Display as flex */
+    flex-direction: column; /* Arrange items in column */
+    justify-content: space-between; /* Space items evenly vertically */
+    align-items: center; /* Center align items horizontally */
 }
 
 .product-img {
-    max-width: 100%;
-    height: auto;
-    cursor: pointer;
-    border-radius: 6px;
+    max-width: 100%; /* Set maximum width */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Change cursor to pointer */
+    border-radius: 6px; /* Add border radius */
 }
 
 .description {
-    width: auto;
-    font-size: 35px;
-    margin-bottom: 35px;
-    border-radius: 6px;
-    background-color: white;
+    width: auto; /* Set width to auto */
+    font-size: 35px; /* Set font size */
+    margin-bottom: 35px; /* Add margin to the bottom */
+    border-radius: 6px; /* Add border radius */
+    background-color: white; /* Set background color */
 }
 
 .price {
-    width: auto;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 65px;
-    background-color: black;
-    color: white;
+    width: auto; /* Set width to auto */
+    font-weight: bold; /* Make the font bold */
+    font-size: 20px; /* Set font size */
+    margin-bottom: 65px; /* Add margin to the bottom */
+    background-color: black; /* Set background color */
+    color: white; /* Set text color */
 }
 
 /* Styling for the Twitter share button */
 .twitter-button, .share-button, .buy-button {
-    flex: 1;
-    justify-content: space-between;
-    margin-top: 5px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
+    flex: 1; /* Set flex property */
+    justify-content: space-between; /* Space items evenly */
+    margin-top: 5px; /* Add margin to the top */
+    padding: 10px; /* Add padding */
+    font-size: 14px; /* Set font size */
+    border-radius: 4px; /* Add border radius */
+    cursor: pointer; /* Change cursor to pointer */
 }
 
 /* Styling for the Twitter button */
 .twitter-button {
-    background-color: #041424;
-    color: white;
+    background-color: #041424; /* Set background color */
+    color: white; /* Set text color */
 }
 
 .twitter-button:hover {
-    background-color: #3a3a3b;
+    background-color: #3a3a3b; /* Change background color on hover */
 }
 
 /* Style for the buy button */
 .buy-button {
-    background-color: #fdbf4b;
-    color: rgb(16, 15, 15);
+    background-color: #fdbf4b; /* Set background color */
+    color: rgb(16, 15, 15); /* Set text color */
 }
 
 .buy-button:hover {
-    background-color: #f8f546;
+    background-color: #f8f546; /* Change background color on hover */
 }
 
 /* Styling for the share button */
 .share-button {
-    background-color: #041424;
-    color: white;
+    background-color: #041424; /* Set background color */
+    color: white; /* Set text color */
 }
 
 .share-button:hover {
-    background-color: #585857;
+    background-color: #585857; /* Change background color on hover */
 }
 
 /* Flex container for buttons */
 .button-container {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    display: flex; /* Display container as flex */
+    justify-content: space-between; /* Space items evenly */
+    position: absolute; /* Set position to absolute */
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Position at the left */
+    width: 100%; /* Set width to 100% */
 }
 
 .sticky-buttons {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+    position: fixed; /* Fix button position */
+    bottom: 10px; /* Position button 10px from the bottom */
+    width: 100%; /* Set width to 100% */
+    display: flex; /* Display as flex */
+    justify-content: space-between; /* Space items evenly */
+    padding: 0 20px; /* Add padding */
     z-index: 1000; /* Ensure buttons stay above other content */
 }
 
 #twitter-share-button {
-    background-color: #1da1f2;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #1da1f2; /* Set background color */
+    color: white; /* Set text color */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius */
+    cursor: pointer; /* Change cursor to pointer */
 }
 
 /* Media query for mobile devices (max-width: 768px) */
 @media only screen and (max-width: 768px) {
     h2 {
-        font-size: 25px;
+        font-size: 25px; /* Set font size */
     }
     .product {
-        width: 100%;
+        width: 100%; /* Set width to 100% */
     }
     .description {
-        font-size: 20px;
+        font-size: 20px; /* Set font size */
     }
 
     .desktop-header {
@@ -231,7 +234,7 @@ p {
     }
 
     .menu {
-        padding-top: 80px;
+        padding-top: 80px; /* Increase padding for menu on mobile devices */
     }
 
     .hamburger {
