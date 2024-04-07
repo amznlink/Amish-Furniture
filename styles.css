@@ -26,7 +26,7 @@
 }
 
 .hamburger {
-    display: none; /* Hide by default */
+    display: flex; /* Hide by default */
     font-size: 25px;
     margin: 15px;
     cursor: pointer;
