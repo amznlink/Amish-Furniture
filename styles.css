@@ -212,7 +212,7 @@ p {
     }
 
     .hamburger {
-        display: block; /* Display on mobile devices */
+        display: flex; /* Display on mobile devices */
     }
 
     .menu {
