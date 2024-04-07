@@ -11,6 +11,11 @@
     z-index: 1000;
     display: flex;
 }
+a {
+    text-align: center; /* Center align the text */
+    font-weight: bold; /* Make the font bold */
+    font-size: 30px;
+}
 
 /* Set background image */
 body {
