@@ -26,6 +26,7 @@
 }
 
 .hamburger {
+    position: sticky;
     font-size: 25px;
     margin: 15px;
     cursor: pointer;
@@ -51,6 +52,17 @@
 
 .desktop-header nav ul li:last-child {
     margin-right: 0; /* Remove margin-right for the last link */
+}
+
+/* Styles for desktop header links */
+.desktop-header nav ul li a {
+    color: #1befa1; /* Change color to white */
+    text-decoration: none; /* Remove underline */
+    font-size: 40px; /* Adjust the font size as needed */ 
+}
+
+.desktop-header nav ul li a:hover {
+    color: #f0dddd; /* Change color on hover to red */
 }
 
 .mobile-header {
