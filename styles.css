@@ -12,7 +12,7 @@
     background-color: #333;
     padding: 10px 0;
     z-index: 1000;
-    display: table-row;
+    display: flex;
 }
 
 /* Set background image */
@@ -168,6 +168,15 @@ p {
     .description {
         font-size: 20px;
     }
+
+    .hamburger {
+        display: block;
+        font-size: 25px;
+        margin: 15px;
+        color: #111;
+        cursor: pointer;
+    }
+
     .menu {
         height: 100%;
         width: 0;
@@ -193,13 +202,7 @@ p {
     .menu a:hover {
         color: #f1f1f1;
     }
-    
-    .hamburger {
-        display: block;
-        font-size: 25px;
-        margin: 15px;
-        cursor: pointer;
-    }
+
     .sticky-header {
         display: none;
     }
