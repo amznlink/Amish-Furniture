@@ -27,8 +27,9 @@
 
 .hamburger {
     position: fixed; /* Fix hamburger position */
+    margin-right: 30px;
     font-size: 25px; /* Set font size for hamburger icon */
-    margin: 15px; /* Set margin for positioning */
+    margin-top: 30px; /* Set margin for positioning */
     cursor: pointer; /* Change cursor to pointer */
     z-index: 1000; /* Ensure hamburger stays above other content */
 }
@@ -37,6 +38,8 @@
     position: fixed; /* Fix desktop header position */
     display: block; /* Display desktop header by default */
     background-color: #000000; /* Set desktop header background color */
+    width: 100%; /* Desktop header background width */
+    margin-top: 10px;
     z-index: 1000; /* Ensure desktop header stays above other content */
 }
 
