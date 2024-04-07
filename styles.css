@@ -1,5 +1,6 @@
 /* Sticky header styles */
 .menu {
+    display: none;
     height: 100%;
     width: 0;
     position: fixed;
@@ -13,11 +14,11 @@
 }
 
 .menu a {
+    display: none;
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
-    display: none;
     transition: 0.3s;
 }
 
@@ -201,8 +202,8 @@ p {
     }
 
     .menu {
-        padding-top: 80px;
         display: block;
+        padding-top: 80px;
     }
     .sticky-header {
         display: none;
