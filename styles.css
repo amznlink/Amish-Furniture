@@ -39,7 +39,7 @@
     display: block; /* Display desktop header by default */
     background-color: #000000; /* Set desktop header background color */
     width: 100%; /* Desktop header background width */
-    margin-top: 10px;
+    margin-top: 2px;
     z-index: 1000; /* Ensure desktop header stays above other content */
 }
 
@@ -62,12 +62,12 @@
 /* Styles for desktop header links */
 .desktop-header nav ul li a {
     color: #fbfbfb; /* Set color for desktop header links */
-    text-decoration: none; /* Remove underline */
-    font-size: 40px; /* Set font size for desktop header links */
+    text-decoration-line: underline; /* Remove underline */
+    font-size: 30px; /* Set font size for desktop header links */
 }
 
 .desktop-header nav ul li a:hover {
-    color: #f0dddd; /* Change color on hover */
+    color: #3c42e6; /* Change color on hover */
 }
 
 .mobile-header {
@@ -88,6 +88,16 @@ body {
 }
 
 /* Your existing CSS styles */
+h1 {
+    width: auto; /* Set width to auto */
+    font-size: 40px; /* Set font size */
+    font-weight: bold; /* Make the font bold */
+    text-align: center; /* Center align the text */
+    border-radius: 4px; /* Add border radius */
+    background-color: black; /* Set background color */
+    color: red; /* Set text color */
+}
+
 h2 {
     width: auto; /* Set width to auto */
     font-size: 40px; /* Set font size */
@@ -96,6 +106,16 @@ h2 {
     border-radius: 4px; /* Add border radius */
     background-color: black; /* Set background color */
     color: white; /* Set text color */
+}
+
+h3 {
+    width: auto; /* Set width to auto */
+    font-size: 40px; /* Set font size */
+    font-weight: bold; /* Make the font bold */
+    text-align: center; /* Center align the text */
+    border-radius: 4px; /* Add border radius */
+    background-color: black; /* Set background color */
+    color:blue; /* Set text color */
 }
 
 p {
@@ -218,7 +238,7 @@ p {
 
 /* Media query for mobile devices (max-width: 768px) */
 @media only screen and (max-width: 768px) {
-    h2 {
+    h1,h2,h3 {
         font-size: 25px; /* Set font size */
     }
     .product {
