@@ -9,12 +9,7 @@
     background-color: #333;
     padding: 10px 0;
     z-index: 1000;
-    display: flex;
-}
-a {
-    text-align: center; /* Center align the text */
-    font-weight: bold; /* Make the font bold */
-    font-size: 30px;
+    display: table-row;
 }
 
 /* Set background image */
@@ -176,5 +171,8 @@ p {
 
     .menu {
         padding-top: 80px;
+    }
+    .sticky-header {
+        display: none;
     }
 }

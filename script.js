@@ -96,3 +96,14 @@ setInterval(fetchDataAndDisplay, 6000000); // 6000000 ms = 10 minutes
 
 // Add event listener to the page share button
 document.getElementById('twitter-share-button').addEventListener('click', sharePage);
+
+document.getElementById("hamburger").addEventListener("click", function() {
+    document.getElementById("menu").style.width = "250px";
+});
+
+document.addEventListener("click", function(event) {
+    var menu = document.getElementById("menu");
+    if (event.target.closest("#menu") === null && event.target.id !== "hamburger") {
+        menu.style.width = "0";
+    }
+});
