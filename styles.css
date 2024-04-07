@@ -2,6 +2,9 @@
 .menu {
     display: none;
 }
+.hamburger {
+    display: none;
+}
 
 .sticky-header {
     position: sticky;
