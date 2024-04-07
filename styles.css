@@ -9,10 +9,26 @@
 .sticky-header {
     position: sticky;
     top: 0;
-    background-color: #333;
-    padding: 10px 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
-    display: flex;
+}
+
+.sticky-header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.sticky-header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.sticky-header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
 
 /* Set background image */
@@ -170,6 +186,7 @@ p {
     }
 
     .hamburger {
+        position: sticky;
         display: block;
         font-size: 25px;
         margin: 15px;
