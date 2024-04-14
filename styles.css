@@ -127,6 +127,14 @@ p {
     text-align: center; /* Center align paragraphs */
 }
 
+.introduction {
+    width: auto; /* Set width to auto */
+    font-size: 35px; /* Set font size */
+    margin-bottom: 35px; /* Add margin to the bottom */
+    border-radius: 6px; /* Add border radius */
+    background-color: white; /* Set background color */
+}
+
 .container {
     display: flex; /* Display container as flex */
     flex-wrap: wrap; /* Allow wrapping of flex items */
